@@ -14,7 +14,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="user-select: auto;">
   <div class="container-fluid" style="user-select: auto;">
     <a class="navbar-brand" href="/" style="user-select: auto;">WEATHER APP</a>
-    <a class="navbar-brand" href="https://openweathermap.org/api" style="user-select: auto;">OpenWeather - Get your
+    <a class="navbar-brand" href="https://openweathermap.org/api"
+       style="font-size:17px;">OpenWeather - Get your
       API</a>
   </div>
 </nav>
@@ -25,7 +26,7 @@
 >
   <h1 class="mb-4 h1 text-white">Current Weather Data</h1>
 
-  <h4 class="text-white px-5">
+  <h4 class="text-white">
     Access current weather data for any location on Earth including over 200,000 cities!
   </h4>
 </div>
@@ -34,9 +35,9 @@
 <form method="post" class="col-md">
   {% csrf_token %}
   <div class="input-group">
-    <input type="text" class="form-control" name="city" placeholder="Choose your city.."
+    <input type="text" class="form-control" name="city" placeholder="Enter your city.."
            style="padding:20px; font-size:20px">
-    <button type="submit" class="btn btn-primary px-5">search</button>
+    <button type="submit" class="btn btn-primary">search</button>
   </div>
 </form>
 </div>
@@ -47,15 +48,15 @@
   <div class="card border-success mb-3" style="max-width: 80%; user-select: auto;">
   <h6 class="card-header text-center" style="user-select: auto;">{{city|upper}}, {{country_code}}</h6>
   <div class="card-body" style="user-select: auto;">
-    <h4 class="card-title p-1 px-3" style="user-select: auto;">Coordinates [X,Y] : {{coordinate}}</h4>
-    <h4 class="card-title p-1 px-3" style="user-select: auto;">Temperature in Celsius : {{temp}}</h4>
-    <h4 class="card-title p-1 px-3" style="user-select: auto;">Pressure : {{pressure}}</h4>
-    <h4 class="card-title p-1 px-3" style="user-select: auto;">Humidity : {{humidity}}</h4>
-    <h4 class="card-title p-1 px-3" style="user-select: auto;">Forecast :
+    <h5 class="card-title p-1 px-3" style="user-select: auto;">Coordinates [X,Y] : {{coordinate}}</h5>
+    <h5 class="card-title p-1 px-3" style="user-select: auto;">Temperature in Celsius : {{temp}}</h5>
+    <h5 class="card-title p-1 px-3" style="user-select: auto;">Pressure : {{pressure}}</h5>
+    <h5 class="card-title p-1 px-3" style="user-select: auto;">Humidity : {{humidity}}</h5>
+    <h5 class="card-title p-1 px-3" style="user-select: auto;">Forecast :
       {{main}}
       <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="img" style="width:50px">
-    </h4>
-    <h4 class="card-title p-1 px-3" style="user-select: auto;">Description : {{description}}</h4>
+    </h5>
+    <h5 class="card-title p-1 px-3" style="user-select: auto;">Description : {{description}}</h5>
   </div>
 </div>
   </div>
