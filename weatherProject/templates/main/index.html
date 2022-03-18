@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/minty/bootstrap.min.css" integrity="sha512-GfQOjDRPz8HF/pCR8ukJ66IqyOBk1Qy1hDzH24Lf5vueGwWZ0+XkbSAb5aMj7ktBBFMwEk/Fm10ycFzKBMSo3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Weather APP</title>
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="user-select: auto;">
+  <div class="container-fluid" style="user-select: auto;">
+    <a class="navbar-brand" href="/" style="user-select: auto;">WEATHER APP</a>
+    <a class="navbar-brand" href="https://openweathermap.org/api" style="user-select: auto;">OpenWeather - Get your
+      API</a>
+  </div>
+</nav>
+
+<div
+  class="p-5 text-center mb-5 shadow p-3 mb-5"
+  style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://images.unsplash.com/photo-1542797488-3a16b9b11784?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHJhaW5ib3clMjBza3l8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60'); background-size:cover;"
+>
+  <h1 class="mb-4 h1 text-white">Current Weather Data</h1>
+
+  <h4 class="text-white px-5">
+    Access current weather data for any location on Earth including over 200,000 cities!
+  </h4>
+</div>
+
+<div class="m-5 text-center">
+<form method="post" class="col-md">
+  {% csrf_token %}
+  <div class="input-group">
+    <input type="text" class="form-control" name="city" placeholder="Choose your city.."
+           style="padding:20px; font-size:20px">
+    <button type="submit" class="btn btn-primary px-5">search</button>
+  </div>
+</form>
+</div>
+
+
+  {% if country_code and coordinate and temp and pressure and humidity%}
+  <div class="container" style="display:flex; justify-content:center;">
+  <div class="card border-success mb-3" style="max-width: 80%; user-select: auto;">
+  <h6 class="card-header text-center" style="user-select: auto;">{{city|upper}}, {{country_code}}</h6>
+  <div class="card-body" style="user-select: auto;">
+    <h4 class="card-title p-1 px-3" style="user-select: auto;">Coordinates [X,Y] : {{coordinate}}</h4>
+    <h4 class="card-title p-1 px-3" style="user-select: auto;">Temperature in Celsius : {{temp}}</h4>
+    <h4 class="card-title p-1 px-3" style="user-select: auto;">Pressure : {{pressure}}</h4>
+    <h4 class="card-title p-1 px-3" style="user-select: auto;">Humidity : {{humidity}}</h4>
+    <h4 class="card-title p-1 px-3" style="user-select: auto;">Forecast :
+      {{main}}
+      <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="img" style="width:50px">
+    </h4>
+    <h4 class="card-title p-1 px-3" style="user-select: auto;">Description : {{description}}</h4>
+  </div>
+</div>
+  </div>
+
+  {% endif %}
+
+  </body>
+</html>
